@@ -3,6 +3,7 @@ import {useDispatch} from "react-redux"
 import authService from "./appWrite/auth"
 import './App.css'
 import {login, logout} from "./store/authSlice"
+import {Header, Footer} from "./components"
 
 function App() {
 const [loading, setLoading]= useState(true);
@@ -11,8 +12,13 @@ const dispatch = useDispatch()
 useEffect(()=>{
   authService.getCurrentUser()
   .then((userData)=>{
-    if (userData) {dispatch(login({userData}))}
-    else { dispatch(dispatch(logout()))}
+    if (userData) {
+      dispatch(login({userData}));
+    }
+    else { 
+      dispatch(dispatch(logout()));
+
+    }
   })
   .finally(()=> setLoading(false))
 },[])
@@ -27,7 +33,6 @@ useEffect(()=>{
   <Footer />
 </div>
     </div>
-  ) ()
+  ): null
 }
-
 export default App
