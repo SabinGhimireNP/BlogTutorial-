@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { set } from 'react-hook-form'
 
 export default function Protected(children, authentication = true) {
 
@@ -15,6 +16,7 @@ export default function Protected(children, authentication = true) {
         else if(!authentication && authStatus !== authentication) {
             navigate('/')
         }
+        setloader(false)
     },[authStatus, navigate, authentication])
   return loader?<h1>Loading...</h1>:<>{children}</>
 }
