@@ -68,7 +68,6 @@ function SignUp() {
                 <button type='submit'>Create Account</button>
 
                 </div>   
-
             </form>
         </div>
     </div>
